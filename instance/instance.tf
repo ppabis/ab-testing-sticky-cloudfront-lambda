@@ -3,6 +3,7 @@ data "aws_ssm_parameter" "AL2023" {
 }
 
 resource "aws_instance" "AppInstance" {
+  count                  = 2
   ami                    = data.aws_ssm_parameter.AL2023.value
   instance_type          = "t4g.nano"
   iam_instance_profile   = aws_iam_instance_profile.AppEC2Role.name
@@ -14,6 +15,6 @@ resource "aws_instance" "AppInstance" {
   usermod -aG docker ec2-user
   EOF
   tags = {
-    Name = "AppVersion1"
+    Name = "AppVersion${count.index + 1}"
   }
 }
