@@ -33,4 +33,15 @@ resource "aws_cloudfront_distribution" "AppDistribution" {
     domain_name = data.aws_instance.AppInstanceV1.public_dns
     origin_id   = "AppVersion1"
   }
+
+  origin {
+    custom_origin_config {
+      http_port              = 8080
+      https_port             = 443
+      origin_protocol_policy = "http-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
+    }
+    domain_name = data.aws_instance.AppInstanceV2.public_dns
+    origin_id   = "AppVersion2"
+  }
 }

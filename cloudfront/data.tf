@@ -3,3 +3,9 @@ data "aws_instance" "AppInstanceV1" {
     Name = "AppVersion1"
   }
 }
+
+data "aws_instance" "AppInstanceV2" {
+  instance_tags = {
+    Name = "AppVersion2"
+  }
+}
