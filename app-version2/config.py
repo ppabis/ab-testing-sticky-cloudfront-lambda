@@ -1,0 +1,5 @@
+BACKGROUND_COLOR="#08122C"
+FONT_FAMILY="Calibri, Helvetica, Sans-Serif"
+COLOR="#E8C2C8"
+VERSION_NAME="Version 2.0"
+VERSION_CODE="2"
