@@ -12,10 +12,5 @@ resource "aws_lambda_function" "OriginSelector" {
   runtime          = "python3.11"
   source_code_hash = data.archive_file.lambda.output_base64sha256
   publish          = true
-  environment {
-    variables = {
-      SECOND_ORIGIN = data.aws_instance.AppInstanceV2.public_dns
-    }
-  }
 }
 

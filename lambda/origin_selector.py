@@ -11,7 +11,7 @@ elif aws_region.startswith("ap-"):
 dynamo = boto3.client("dynamodb", region_name=aws_region)
 
 import random
-second_origin = os.environ.get("SECOND_ORIGIN")
+second_origin = "ec2-54-236-20-164.compute-1.amazonaws.com"
 
 def pick_random(request):
     if random.choice([0, 1]) == 0:
