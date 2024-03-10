@@ -3,3 +3,7 @@ data "aws_instance" "AppInstanceV1" {
     Name = "AppVersion1"
   }
 }
+
+data "aws_lambda_function" "origin_request" {
+  function_name = "OriginSelector"
+}

@@ -8,11 +8,17 @@ resource "aws_cloudfront_distribution" "AppDistribution" {
       query_string = true
       cookies { forward = "all" }
     }
+
+    lambda_function_association {
+      event_type   = "origin-request"
+      lambda_arn   = "${data.aws_lambda_function.origin_request.arn}:2"
+      include_body = false
+    }
   }
 
   viewer_certificate {
     cloudfront_default_certificate = true
-    minimum_protocol_version       = "TLSv1.2_2019"
+    minimum_protocol_version       = "TLSv1.2_2021"
   }
 
   restrictions {
@@ -33,4 +39,5 @@ resource "aws_cloudfront_distribution" "AppDistribution" {
     domain_name = data.aws_instance.AppInstanceV1.public_dns
     origin_id   = "AppVersion1"
   }
+
 }
